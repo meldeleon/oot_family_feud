@@ -10,6 +10,7 @@ function Answers({ answer_list, action }) {
         name={answer.name}
         points={answer.points}
         action={action}
+        addable={answer.addable}
       ></Answer>
     )
   })

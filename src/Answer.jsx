@@ -1,16 +1,22 @@
 import React from "react"
 
-function Answer({ number, name, points, action }) {
+function Answer({ number, name, points, action, addable }) {
   const [showResults, setShowResults] = React.useState(false)
-  console.log(action)
+  const [disabledState, setDisabled] = React.useState(false)
   const onClick = () => {
     setShowResults(true)
     action(points)
+    setDisabled(true)
   }
 
   return (
     <div>
-      <input type="button" value={number} onClick={onClick} />
+      <input
+        type="button"
+        value={number}
+        onClick={onClick}
+        disabled={disabledState ? true : false}
+      />
       {showResults ? <Results name={name} points={points} /> : null}
     </div>
   )

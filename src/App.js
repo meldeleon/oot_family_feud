@@ -5,7 +5,11 @@ import Board from "./Board.jsx"
 import "bulma/css/bulma.min.css"
 
 function App() {
-  return <Board></Board>
+  return (
+    <body>
+      <Board></Board>
+    </body>
+  )
 }
 
 export default App
