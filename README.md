@@ -1,3 +1,16 @@
+# To-do
+
+1. ~~Ingest a question and display it.~~
+2. ~~Display hidden answers, reveal when clicked.~~
+3. ~~Track points in a round, add to points when answer is revealed.~~
+4. Failed guesses/strike count
+5. Assign a winner to a round
+6. Track points for two teams.
+7. Name the teams
+8. Next Round
+9. Reset Round
+10. Reset Game
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
