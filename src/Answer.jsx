@@ -1,21 +1,26 @@
 import React from "react"
 
-function Answer({ number, name, value }) {
+function Answer({ number, name, points, action }) {
   const [showResults, setShowResults] = React.useState(false)
-  const onClick = () => setShowResults(true)
+  console.log(action)
+  const onClick = () => {
+    setShowResults(true)
+    action(points)
+  }
+
   return (
     <div>
       <input type="button" value={number} onClick={onClick} />
-      {showResults ? <Results show={name} /> : null}
+      {showResults ? <Results name={name} points={points} /> : null}
     </div>
   )
 }
 
-function Results({ show }) {
+function Results({ name, points }) {
   return (
-    <div id="results" className="search-results">
-      {show}
-    </div>
+    <span id="results" className="search-results">
+      {name} {points}
+    </span>
   )
 }
 
