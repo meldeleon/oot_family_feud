@@ -4,13 +4,13 @@ import Answers from "./Answers.jsx"
 let card_data = {
   question: "Besides cuccos, what enemy would make the tastiest dish?",
   score: 0,
-  answers: {
-    1: { name: "Big Octo/Octorok", value: 40 },
-    2: { name: "Dodongo", value: 21 },
-    3: { name: "Lizalfos", value: 10 },
-    4: { name: "Ganondorf", value: 8 },
-    5: { name: "Guay", value: 8 },
-  },
+  answers: [
+    { number: 1, name: "Big Octo/Octorok", value: 40 },
+    { number: 2, name: "Dodongo", value: 21 },
+    { number: 3, name: "Lizalfos", value: 10 },
+    { number: 4, name: "Ganondorf", value: 8 },
+    { number: 5, name: "Guay", value: 8 },
+  ],
 }
 
 class Board extends React.Component {
@@ -24,7 +24,7 @@ class Board extends React.Component {
         <div id="title">Zelda Feud</div>
         <div id="score">{this.state.score}</div>
         <div id="question">{this.state.question}</div>
-        <Answers></Answers>
+        <Answers answer_list={this.state.answers}></Answers>
       </div>
     )
   }

@@ -1,10 +1,17 @@
 import React from "react"
 import Answer from "./Answer.jsx"
 
-class Answers extends React.Component {
-  render() {
-    return <Answer></Answer>
-  }
+function Answers({ answer_list }) {
+  return answer_list.map((answer) => {
+    console.log(answer)
+    return (
+      <Answer
+        number={answer.number}
+        name={answer.name}
+        value={answer.value}
+      ></Answer>
+    )
+  })
 }
 
 export default Answers
