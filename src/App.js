@@ -1,13 +1,13 @@
 import React from "react"
+import Game from "./Game.jsx"
 import logo from "./logo.svg"
 import "./App.css"
-import Board from "./Board.jsx"
 import "bulma/css/bulma.min.css"
 
 function App() {
   return (
     <body>
-      <Board></Board>
+      <Game></Game>
     </body>
   )
 }

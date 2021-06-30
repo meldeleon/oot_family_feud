@@ -1,6 +1,6 @@
 import React from "react"
 
-function Answer({ number, name, points, action, addable }) {
+function Answer({ number, name, points, action }) {
   const [showResults, setShowResults] = React.useState(false)
   const [disabledState, setDisabled] = React.useState(false)
   const onClick = () => {

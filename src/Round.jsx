@@ -1,7 +1,7 @@
 import React from "react"
 import Answers from "./Answers.jsx"
 import Strikes from "./Strikes.jsx"
-
+import Winner from "./Winner.jsx"
 let round_data = {
   question: "Besides cuccos, what enemy would make the tastiest dish?",
   score: 0,
@@ -13,18 +13,30 @@ let round_data = {
     { number: 4, name: "Ganondorf", points: 8, addable: false },
     { number: 5, name: "Guay", points: 8, addable: false },
   ],
+  teams_array: [
+    { label: "Left", value: "left" },
+    { label: "Right", value: "right" },
+  ],
+  winning_team: "",
 }
 
-class Board extends React.Component {
+class Round extends React.Component {
   constructor(props) {
     super(props)
     this.state = round_data
     this.pointsHandler = this.pointsHandler.bind(this)
+    this.setWinner = this.setWinner.bind(this)
   }
   pointsHandler(points) {
     this.setState({
       score: this.state.score + points,
     })
+  }
+  setWinner(winner) {
+    this.setState({
+      winning_team: winner,
+    })
+    this.props.action(this.state.score, this.state.winning_team)
   }
 
   render() {
@@ -54,9 +66,15 @@ class Board extends React.Component {
             <input type="button" onClick={strikeOut} value="Buzz"></input>
           </div>
         </div>
+        <div id="win_container">
+          <Winner
+            teams={this.state.teams_array}
+            action={this.setWinner}
+          ></Winner>
+        </div>
       </div>
     )
   }
 }
 
-export default Board
+export default Round
