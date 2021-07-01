@@ -6,7 +6,7 @@
 4. ~~Failed guesses/strike count.~~
 5. ~~Track points for two teams.~~
 6. ~~Assign a winner to a round.~~
-7. Name the teams.
+7. Create Team Cards (...: Rename, Score, Clear Score)
 8. Add next Round.
 9. Add reset Round.
 10. Add reset Game.

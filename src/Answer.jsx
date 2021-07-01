@@ -10,14 +10,17 @@ function Answer({ number, name, points, action }) {
   }
 
   return (
-    <div>
-      <input
-        type="button"
-        value={number}
-        onClick={onClick}
-        disabled={disabledState ? true : false}
-      />
-      {showResults ? <Results name={name} points={points} /> : null}
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <input
+          type="button"
+          value={number}
+          onClick={onClick}
+          disabled={disabledState ? true : false}
+          class="button"
+        />
+        {showResults ? <Results name={name} points={points} /> : null}
+      </div>
     </div>
   )
 }

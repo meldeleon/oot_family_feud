@@ -1,5 +1,7 @@
 import React from "react"
 import Round from "./Round.jsx"
+import Team from "./Team.jsx"
+import "bulma/css/bulma.min.css"
 
 let game_data = {
   right_team_name: "Right Team",
@@ -7,10 +9,6 @@ let game_data = {
   left_team_name: "Left Team",
   left_team_score: 0,
   rounds: [],
-  teams_array: [
-    { label: "Left", value: "left" },
-    { label: "Right", value: "right" },
-  ],
 }
 
 class Game extends React.Component {
@@ -18,6 +16,7 @@ class Game extends React.Component {
     super(props)
     this.state = game_data
     this.teamPointChange = this.teamPointChange.bind(this)
+    this.teamName = this.teamName.bind(this)
   }
   teamPointChange(points, team) {
     if (team === "right") {
@@ -30,23 +29,32 @@ class Game extends React.Component {
       })
     }
   }
+  teamName(team, name) {
+    if (team === "right") {
+      this.setState({
+        right_team_name: name,
+      })
+    } else {
+      this.setState({
+        left_team_name: name,
+      })
+    }
+  }
 
   render() {
     return (
       <div id="game_container">
-        <div id="team_points">
-          <div id="leftTeam">
-            {this.state.left_team_name} : {this.state.left_team_score}
-          </div>
-          <div id="rightTeam">
-            {this.state.right_team_name} : {this.state.right_team_score}
-          </div>
-        </div>
+        <Team
+          right_team_name={this.state.right_team_name}
+          left_team_name={this.state.left_team_name}
+          right_team_score={this.state.right_team_score}
+          left_team_score={this.state.left_team_score}
+          action={this.teamName}
+        />
         <Round
           right_team_name={this.state.right_team_name}
           left_team_name={this.state.left_team_name}
           action={this.teamPointChange}
-          teams_array={this.state.teams_array}
         ></Round>
       </div>
     )

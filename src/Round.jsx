@@ -3,6 +3,7 @@ import Answers from "./Answers.jsx"
 import Strikes from "./Strikes.jsx"
 import Winner from "./Winner.jsx"
 let round_data = {
+  round_number: 1,
   question: "Besides cuccos, what enemy would make the tastiest dish?",
   score: 0,
   strikes: 0,
@@ -48,8 +49,12 @@ class Round extends React.Component {
     }
     return (
       <div id="board_container">
-        <div id="title">Zelda Feud</div>
-        <div id="score">{this.state.score}</div>
+        <div id="title" class="title is-3">
+          Zelda Feud
+        </div>
+        <div id="score">
+          Round {this.state.round_number} Total: {this.state.score}
+        </div>
         <div id="question">{this.state.question}</div>
         <Answers
           answer_list={this.state.answers}
@@ -60,12 +65,18 @@ class Round extends React.Component {
             <Strikes count={this.state.strikes}></Strikes>
           </div>
           <div id="strike_button_container">
-            <input type="button" onClick={strikeOut} value="Buzz"></input>
+            <input
+              type="button"
+              onClick={strikeOut}
+              value="Buzz"
+              class="button"
+            ></input>
           </div>
         </div>
         <div id="win_container">
           <Winner
-            teams={this.props.teams_array}
+            left_team_name={this.props.left_team_name}
+            right_team_name={this.props.right_team_name}
             action={this.setWinner}
           ></Winner>
         </div>

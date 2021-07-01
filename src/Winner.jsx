@@ -1,5 +1,7 @@
 import React from "react"
 import Select from "react-dropdown-select"
+import { Dropdown } from "react-bulma-components"
+import { FaAngleDown } from "react-icons/fa"
 
 class Winner extends React.Component {
   constructor(props) {
@@ -8,13 +10,20 @@ class Winner extends React.Component {
   }
   render(props) {
     return (
-      <Select
-        options={this.props.teams}
-        onChange={(values) => {
-          console.log(values[0].value)
-          this.props.action(values[0].value)
-        }}
-      />
+      <Dropdown
+        closeOnSelect={true}
+        color="blue"
+        icon={<FaAngleDown></FaAngleDown>}
+        label="Select Round Winner"
+        onChange={(e) => this.props.action(e)}
+      >
+        <Dropdown.Item renderAs="A" value="left">
+          {this.props.left_team_name}
+        </Dropdown.Item>
+        <Dropdown.Item renderAs="A" value="right">
+          {this.props.right_team_name}
+        </Dropdown.Item>
+      </Dropdown>
     )
   }
 }
