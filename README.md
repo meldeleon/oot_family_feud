@@ -3,9 +3,9 @@
 1. ~~Ingest a question and display it.~~
 2. ~~Display hidden answers, reveal when clicked.~~
 3. ~~Track points in a round, add to points when answer is revealed. Make sure points are only addable once per round.~~
-4. ~Failed guesses/strike count.~
-5. Track points for two teams.
-6. Assign a winner to a round.
+4. ~~Failed guesses/strike count.~~
+5. ~~Track points for two teams.~~
+6. ~~Assign a winner to a round.~~
 7. Name the teams.
 8. Add next Round.
 9. Add reset Round.

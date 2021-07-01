@@ -6,7 +6,11 @@ let game_data = {
   right_team_score: 0,
   left_team_name: "Left Team",
   left_team_score: 0,
-  questions: [],
+  rounds: [],
+  teams_array: [
+    { label: "Left", value: "left" },
+    { label: "Right", value: "right" },
+  ],
 }
 
 class Game extends React.Component {
@@ -42,6 +46,7 @@ class Game extends React.Component {
           right_team_name={this.state.right_team_name}
           left_team_name={this.state.left_team_name}
           action={this.teamPointChange}
+          teams_array={this.state.teams_array}
         ></Round>
       </div>
     )

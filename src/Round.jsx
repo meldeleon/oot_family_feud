@@ -13,10 +13,6 @@ let round_data = {
     { number: 4, name: "Ganondorf", points: 8, addable: false },
     { number: 5, name: "Guay", points: 8, addable: false },
   ],
-  teams_array: [
-    { label: "Left", value: "left" },
-    { label: "Right", value: "right" },
-  ],
   winning_team: "",
 }
 
@@ -33,10 +29,11 @@ class Round extends React.Component {
     })
   }
   setWinner(winner) {
+    console.log("the winner is: " + winner)
     this.setState({
       winning_team: winner,
     })
-    this.props.action(this.state.score, this.state.winning_team)
+    this.props.action(this.state.score, winner)
   }
 
   render() {
@@ -68,7 +65,7 @@ class Round extends React.Component {
         </div>
         <div id="win_container">
           <Winner
-            teams={this.state.teams_array}
+            teams={this.props.teams_array}
             action={this.setWinner}
           ></Winner>
         </div>
