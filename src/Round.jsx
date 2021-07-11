@@ -55,7 +55,9 @@ class Round extends React.Component {
         <div id="score">
           Round {this.state.round_number} Total: {this.state.score}
         </div>
-        <div id="question">{this.state.question}</div>
+        <div id="question" class="title is-4">
+          {this.state.question}
+        </div>
         <Answers
           answer_list={this.state.answers}
           action={this.pointsHandler}

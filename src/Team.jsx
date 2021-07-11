@@ -3,10 +3,7 @@ import "bulma/css/bulma.min.css"
 import { FaAngleDown } from "react-icons/fa"
 import { Icon } from "react-bulma-components"
 import { Dropdown } from "react-bulma-components"
-const menu_options = [
-  { label: "Rename Team", value: "rename" },
-  { label: "Clear Points", value: "clear" },
-]
+
 class Team extends React.Component {
   constructor(props) {
     super(props)
@@ -27,20 +24,23 @@ class Team extends React.Component {
             label={left_label}
             onChange={(e) => {
               if (e === "rename") {
-                //function that pops up input
                 let newName = prompt(
                   "What would you like to rename the Left Team?"
                 )
-                //rename via actions
                 this.props.action("left", newName)
+              } else if (e === "edit_points") {
+                let newPoints = prompt("Enter new value of points.")
+                this.props.override("left", newPoints)
+              } else if (e === "clear_score") {
+                this.props.override("left", 0)
               } else {
-                //clear score
+                //do nothing
               }
             }}
           >
-            <Dropdown.Item renderAs="A" value="rename">
-              Rename Team
-            </Dropdown.Item>
+            <Dropdown.Item value="rename">Rename Team</Dropdown.Item>
+            <Dropdown.Item value="edit_points">Edit Points</Dropdown.Item>
+            <Dropdown.Item value="clear_score">Clear Points</Dropdown.Item>
           </Dropdown>
         </div>
         <div class="column">
@@ -57,14 +57,19 @@ class Team extends React.Component {
                 )
                 //rename via actions
                 this.props.action("right", newName)
+              } else if (e === "edit_points") {
+                let newPoints = prompt("Enter new value of points.")
+                this.props.override("right", newPoints)
+              } else if (e === "clear_score") {
+                this.props.override("right", 0)
               } else {
-                //clear score
+                //do nothing
               }
             }}
           >
-            <Dropdown.Item renderAs="A" value="rename">
-              rename
-            </Dropdown.Item>
+            <Dropdown.Item value="rename">Rename Team</Dropdown.Item>
+            <Dropdown.Item value="edit_points">Edit Points</Dropdown.Item>
+            <Dropdown.Item value="clear_score">Clear Points</Dropdown.Item>
           </Dropdown>
         </div>
       </div>

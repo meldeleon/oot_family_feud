@@ -19,7 +19,9 @@ function Answer({ number, name, points, action }) {
           disabled={disabledState ? true : false}
           class="button"
         />
-        {showResults ? <Results name={name} points={points} /> : null}
+        <span class="title is-5">
+          {showResults ? <Results name={name} points={points} /> : null}
+        </span>
       </div>
     </div>
   )
