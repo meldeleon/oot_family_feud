@@ -1,24 +1,22 @@
 import React from "react"
 import Round from "./Round.jsx"
 import Team from "./Team.jsx"
+import { game_data } from "./data.js"
 import "bulma/css/bulma.min.css"
+import { Button } from "react-bulma-components"
 
-let game_data = {
-  right_team_name: "Right Team",
-  right_team_score: 0,
-  left_team_name: "Left Team",
-  left_team_score: 0,
-  rounds: [],
-}
+let current_game_data = game_data
 
 class Game extends React.Component {
   constructor(props) {
     super(props)
-    this.state = game_data
+    this.state = current_game_data
     this.teamPointChange = this.teamPointChange.bind(this)
     this.teamName = this.teamName.bind(this)
     this.overridePoints = this.overridePoints.bind(this)
+    this.changeRounds = this.changeRounds.bind(this)
   }
+  //hook up the buttons to retrieving and sending round data to the round component
   teamPointChange(points, team) {
     if (team === "right") {
       this.setState({
@@ -52,6 +50,12 @@ class Game extends React.Component {
       })
     }
   }
+  changeRounds(round_number) {
+    this.setState({
+      current_round_number: round_number,
+    })
+    Round.forceUpdate()
+  }
 
   render() {
     return (
@@ -68,7 +72,26 @@ class Game extends React.Component {
           right_team_name={this.state.right_team_name}
           left_team_name={this.state.left_team_name}
           action={this.teamPointChange}
+          round_number={this.state.current_round_number}
+          round_data={this.state.rounds[this.state.current_round_number - 1]}
         ></Round>
+
+        <button
+          onClick={() => {
+            this.changeRounds(this.state.current_round_number - 1)
+          }}
+          class="button"
+        >
+          Previous Round
+        </button>
+        <button
+          class="button"
+          onClick={() => {
+            this.changeRounds(this.state.current_round_number + 1)
+          }}
+        >
+          Next Round
+        </button>
       </div>
     )
   }

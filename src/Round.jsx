@@ -2,25 +2,25 @@ import React from "react"
 import Answers from "./Answers.jsx"
 import Strikes from "./Strikes.jsx"
 import Winner from "./Winner.jsx"
-let round_data = {
-  round_number: 1,
-  question: "Besides cuccos, what enemy would make the tastiest dish?",
-  score: 0,
-  strikes: 0,
-  answers: [
-    { number: 1, name: "Big Octo/Octorok", points: 40, addable: false },
-    { number: 2, name: "Dodongo", points: 21, addable: false },
-    { number: 3, name: "Lizalfos", points: 10, addable: false },
-    { number: 4, name: "Ganondorf", points: 8, addable: false },
-    { number: 5, name: "Guay", points: 8, addable: false },
-  ],
-  winning_team: "",
-}
+
+// let round_data = {
+//   question: "Besides cuccos, what enemy would make the tastiest dish?",
+//   score: 0,
+//   strikes: 0,
+//   answers: [
+//     { number: 1, name: "Big Octo/Octorok", points: 40, addable: false },
+//     { number: 2, name: "Dodongo", points: 21, addable: false },
+//     { number: 3, name: "Lizalfos", points: 10, addable: false },
+//     { number: 4, name: "Ganondorf", points: 8, addable: false },
+//     { number: 5, name: "Guay", points: 8, addable: false },
+//   ],
+//   winning_team: "",
+// }
 
 class Round extends React.Component {
   constructor(props) {
     super(props)
-    this.state = round_data
+    this.state = this.props.round_data
     this.pointsHandler = this.pointsHandler.bind(this)
     this.setWinner = this.setWinner.bind(this)
   }
@@ -53,7 +53,7 @@ class Round extends React.Component {
           Zelda Feud
         </div>
         <div id="score">
-          Round {this.state.round_number} Total: {this.state.score}
+          Round {this.props.round_number} Total: {this.state.score}
         </div>
         <div id="question" class="title is-4">
           {this.state.question}
