@@ -1,16 +1,15 @@
 import React from "react"
 import Round from "./Round.jsx"
 import Team from "./Team.jsx"
-import { game_data } from "./data.js"
+import { game_data, question_bank } from "./data.js"
 import "bulma/css/bulma.min.css"
 import { Button } from "react-bulma-components"
 
-let current_game_data = game_data
 
 class Game extends React.Component {
   constructor(props) {
     super(props)
-    this.state = current_game_data
+    this.setState({game_data, question_bank}) // how to set the state for game_data and your question_bank
     this.teamPointChange = this.teamPointChange.bind(this)
     this.teamName = this.teamName.bind(this)
     this.overridePoints = this.overridePoints.bind(this)
@@ -42,17 +41,17 @@ class Game extends React.Component {
   overridePoints(team, points) {
     if (team === "right") {
       this.setState({
-        right_team_score: points,
+        game_data: {...this.state.game_data, right_team_score: points}, question_bank // this will set the state for game data to set the points
       })
     } else {
       this.setState({
-        left_team_score: points,
+        game_data: {...this.state.game_data, left_team_score: points}, question_bank // this will set the state for game data to set the points
       })
     }
   }
   changeRounds(round_number) {
     this.setState({
-      current_round_number: round_number,
+      current_round_number: round_number, //You would do a similar thing to 44 and 48 in this line
     })
   }
 
