@@ -1,3 +1,27 @@
+
+export const question_bank = [
+  //Do this for each question
+        {
+          question: "Besides cuccos, what enemy would make the tastiest dish?",
+          question_1_name: "Big Octo/Octorok",
+          question_1_points: 40,
+          question_1_addable: false,
+          question_2_name: "Dodongo",
+          question_2_points: 21,
+          question_2_addable: false,
+          question_3_name: "Lizalfos",
+          question_3_points: 10,
+          question_3_addable: false,
+          question_4_name: "Ganondorf",
+          question_4_points: 8,
+          question_4_addable: false,
+          question_5_name: "Guay",
+          question_5_points: 8,
+          question_5_addable: false,
+        },
+      ];
+
+
 export let game_data = {
   right_team_name: "Right Team",
   right_team_score: 0,
