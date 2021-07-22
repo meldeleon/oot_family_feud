@@ -54,7 +54,6 @@ class Game extends React.Component {
     this.setState({
       current_round_number: round_number,
     })
-    Round.forceUpdate()
   }
 
   render() {
@@ -73,25 +72,8 @@ class Game extends React.Component {
           left_team_name={this.state.left_team_name}
           action={this.teamPointChange}
           round_number={this.state.current_round_number}
-          round_data={this.state.rounds[this.state.current_round_number - 1]}
+          round_handler={this.changeRounds}
         ></Round>
-
-        <button
-          onClick={() => {
-            this.changeRounds(this.state.current_round_number - 1)
-          }}
-          class="button"
-        >
-          Previous Round
-        </button>
-        <button
-          class="button"
-          onClick={() => {
-            this.changeRounds(this.state.current_round_number + 1)
-          }}
-        >
-          Next Round
-        </button>
       </div>
     )
   }

@@ -2,27 +2,16 @@ import React from "react"
 import Answers from "./Answers.jsx"
 import Strikes from "./Strikes.jsx"
 import Winner from "./Winner.jsx"
+import { rounds } from "./data.js"
 
-// let round_data = {
-//   question: "Besides cuccos, what enemy would make the tastiest dish?",
-//   score: 0,
-//   strikes: 0,
-//   answers: [
-//     { number: 1, name: "Big Octo/Octorok", points: 40, addable: false },
-//     { number: 2, name: "Dodongo", points: 21, addable: false },
-//     { number: 3, name: "Lizalfos", points: 10, addable: false },
-//     { number: 4, name: "Ganondorf", points: 8, addable: false },
-//     { number: 5, name: "Guay", points: 8, addable: false },
-//   ],
-//   winning_team: "",
-// }
-
+let current_round = 0
 class Round extends React.Component {
   constructor(props) {
     super(props)
-    this.state = this.props.round_data
     this.pointsHandler = this.pointsHandler.bind(this)
     this.setWinner = this.setWinner.bind(this)
+    this.state = rounds[current_round]
+    this.checkForRoundBounds = this.checkForRoundBounds.bind(this)
   }
   pointsHandler(points) {
     this.setState({
@@ -35,6 +24,17 @@ class Round extends React.Component {
       winning_team: winner,
     })
     this.props.action(this.state.score, winner)
+  }
+  checkForRoundBounds(round) {
+    if (round < 0) {
+      alert("There are no previous rounds.")
+      return false
+    } else if (round >= rounds.length) {
+      alert("You have reached the end of the rounds")
+      return false
+    } else {
+      return true
+    }
   }
 
   render() {
@@ -81,6 +81,36 @@ class Round extends React.Component {
             right_team_name={this.props.right_team_name}
             action={this.setWinner}
           ></Winner>
+        </div>
+        <div id="change_rounds_container">
+          <button
+            onClick={() => {
+              if (this.checkForRoundBounds(current_round - 1)) {
+                current_round = this.state.number - 1
+                this.setState(rounds[current_round])
+                this.props.round_handler(current_round + 1)
+                console.log("current round is now: " + current_round)
+              }
+              console.log(current_round)
+            }}
+            class="button"
+          >
+            Previous Round
+          </button>
+          <button
+            onClick={() => {
+              if (this.checkForRoundBounds(current_round + 1)) {
+                current_round = this.state.number + 1
+                this.setState(rounds[current_round])
+                this.props.round_handler(current_round + 1)
+                console.log("current round is now: " + current_round)
+              }
+              console.log(current_round)
+            }}
+            class="button"
+          >
+            Next Round
+          </button>
         </div>
       </div>
     )
